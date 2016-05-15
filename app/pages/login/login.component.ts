@@ -22,8 +22,8 @@ export class LoginPage implements OnInit {
 
     constructor(private _userService: UserService, private _router: Router, private page: Page) {
         this.user = new User();
-        this.user.email = 'user@nativescript.org';
-        this.user.password = 'password';
+        this.user.email = 'civan.cim@gmail.com';
+        this.user.password = '12345';
     }
 
     ngOnInit() {
@@ -43,10 +43,10 @@ export class LoginPage implements OnInit {
     toggleDisplay() {
         this.isLoggingIn = !this.isLoggingIn;
         let container = <View>this.container.nativeElement;
-        container.animate({
+        /*container.animate({
             backgroundColor: this.isLoggingIn ? new Color('#ffffff') : new Color('#301217'),
             duration: 200
-        });
+        });*/
     }
 
     login() {

@@ -15,6 +15,13 @@ TextField {
 ListView {
   opacity: 0;
 }
+.delete-container {
+  border-radius: 50;
+  background-color: blueviolet;
+  padding: 5;
+  height: 20;
+  margin-right: 8;
+}
 .visible {
   animation-name: show;
   animation-duration: 1s;

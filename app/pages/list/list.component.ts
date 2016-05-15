@@ -2,6 +2,7 @@
 
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { TextField } from 'ui/text-field';
+import { confirm, login } from 'ui/dialogs';
 import { Grocery } from '../../shared/grocery/grocery';
 import { GroceryListService } from '../../shared/grocery/grocery-list.service';
 
@@ -52,6 +53,24 @@ export class ListPage implements OnInit {
                 this.grocery = '';
             });
     }
+
+    delete(item: Grocery) {
+        confirm({
+            message: `Are you sure you want to delete '${item.name}'`, 
+            okButtonText: "Yep",
+            cancelButtonText: "Nope",
+        }).then(result => {
+            if (result) {
+                this._groceryListService.delete(item.id)
+                    .subscribe(() => {
+                        let i = this.groceryList.indexOf(item);
+                        this.groceryList.splice(i, 1);
+                        console.log('removed', item.name);
+                    })
+            }
+        });
+    }
+
     share() {
         let list = this.groceryList.map(item => item.name);
         let listString = list.join(", ").trim();
